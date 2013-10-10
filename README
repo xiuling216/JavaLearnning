@@ -1,4 +1,5 @@
 学习Java过程中的一些代码
 
-default包：为IO代码
+JavaIO包：为IO代码
 JavaReflect包:为反射代码
+Singleton包：单例模式的六种实现
