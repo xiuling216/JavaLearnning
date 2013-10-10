@@ -1,3 +1,4 @@
+package JavaIO;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -5,32 +6,34 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 /**
- * lxl_pro
+ * 序列化一组对象
  */
-
-/**
- * 
- */
-public class serDemo {
+public class serDemoB {
 	public static void main(String[] args) throws Exception {
-		ser();// 序列化
-		dser();// 反序列化
+		PersonC[] per = { new PersonC("echo", 20), new PersonC("snow", 30),
+				new PersonC("sunny", 40) };
+		ser(per);// 序列化
+		Object[] obj = dser();// 反序列化
+		for (int i = 0; i < obj.length; i++) {
+			PersonC p = (PersonC) obj[i];
+			System.out.println(p);
+		}
 	}
 
-	public static void ser() throws Exception {
+	public static void ser(Object[] obj) throws Exception {
 		File file = new File("d:" + File.separator + "hello.txt");
 		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(
 				file));
-		oos.writeObject(new PersonC("echo", 20));
+		oos.writeObject(obj);
 		oos.close();
 	}
 
-	public static void dser() throws Exception {
+	public static Object[] dser() throws Exception {
 		File file = new File("d:" + File.separator + "hello.txt");
 		ObjectInputStream input = new ObjectInputStream(new FileInputStream(
 				file));
-		Object obj = input.readObject();
+		Object[] obj = (Object[]) input.readObject();
 		input.close();
-		System.out.println(obj);
+		return obj;
 	}
 }

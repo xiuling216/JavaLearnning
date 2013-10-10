@@ -1,3 +1,4 @@
+package JavaIO;
 
 /**
  * 取得本地的默认编码 
